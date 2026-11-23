@@ -1,0 +1,46 @@
+/* 职责：设计令牌 — 颜色、圆角、阴影、动效时长。深色主题覆写 */
+:root {
+  --accent: #0067c0;
+  --bg-desktop: #eef2f5;
+  --bg-window: rgba(243, 243, 243, .85);
+  --bg-titlebar: rgba(255, 255, 255, .6);
+  --bg-taskbar: rgba(243, 243, 243, .85);
+  --bg-solid: #f3f3f3;
+  --bg-hover: rgba(0, 0, 0, .06);
+  --bg-active: rgba(0, 0, 0, .1);
+  --text-primary: #1b1b1b;
+  --text-secondary: #5c5c5c;
+  --border-subtle: rgba(0, 0, 0, .08);
+  --radius-win: 8px;
+  --radius-ctl: 4px;
+  --blur: 20px;
+  --shadow-win: 0 8px 24px rgba(0, 0, 0, .16), 0 0 1px rgba(0, 0, 0, .1);
+  --shadow-win-focus: 0 16px 48px rgba(0, 0, 0, .26), 0 0 1px rgba(0, 0, 0, .2);
+  --shadow-menu: 0 4px 16px rgba(0, 0, 0, .14);
+  --dur-fast: 120ms;
+  --dur-mid: 200ms;
+  --dur-slow: 300ms;
+  --ease: cubic-bezier(.2, 0, 0, 1);
+  --taskbar-h: 48px;
+}
+
+[data-theme='dark'] {
+  --bg-desktop: #1c1c1c;
+  --bg-window: rgba(32, 32, 32, .88);
+  --bg-titlebar: rgba(48, 48, 48, .6);
+  --bg-taskbar: rgba(32, 32, 32, .85);
+  --bg-solid: #202020;
+  --bg-hover: rgba(255, 255, 255, .07);
+  --bg-active: rgba(255, 255, 255, .12);
+  --text-primary: #f0f0f0;
+  --text-secondary: #a0a0a0;
+  --border-subtle: rgba(255, 255, 255, .08);
+  --shadow-win: 0 8px 24px rgba(0, 0, 0, .5), 0 0 1px rgba(0, 0, 0, .4);
+  --shadow-win-focus: 0 16px 48px rgba(0, 0, 0, .7), 0 0 1px rgba(0, 0, 0, .6);
+}
+
+/* 不支持 backdrop-filter 时回退为不透明背景 */
+@supports not (backdrop-filter: blur(1px)) {
+  :root { --bg-window: #f3f3f3; --bg-taskbar: #f3f3f3; --bg-titlebar: #ffffff; }
+  [data-theme='dark'] { --bg-window: #202020; --bg-taskbar: #202020; --bg-titlebar: #303030; }
+}
